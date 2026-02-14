@@ -20,6 +20,8 @@ jobs:
       # Runs a single command using the runners shell
       - name: Run reusable build setup
         run: echo 'This is reusable Workflow'
+      - name: Run reusable build setup2
+        run: echo 'This is reusable Workflow2'
 
       # Runs a set of commands using the runners shell
       - name: Run a multi-line script
