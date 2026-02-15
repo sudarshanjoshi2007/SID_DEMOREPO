@@ -1,7 +1,7 @@
 name: selfhosted_runner
 on:
   push:
-    - main
+    branches: [ "main" ]
 jobs:
  build-job:
    runs-on: ubuntu-latest
