@@ -1,0 +1,45 @@
+# File: .github/workflows/feature-branch-workflow.yml
+name: Feature Branch Workflow
+
+# Trigger the workflow on push events
+on:
+  push:
+    # Only run for branches starting with 'feature/'
+    branches:
+      - 'feature/**'
+    # Only run when files under specific paths are modified
+    paths:
+      - 'src/**'       # Matches all files under the src directory
+      - 'config/**'    # Matches all files under the config directory
+      - 'README.md'    # Matches a specific file
+
+# Define the workflow jobs
+jobs:
+  build-test:
+    runs-on: ubuntu-latest
+
+    steps:
+      # Step 1: Checkout the repository
+      - name: Checkout repository
+        uses: actions/checkout@v3
+
+      # Step 2: Set up Python (example)
+      - name: Set up Python 3.11
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.11'
+
+      # Step 3: Install dependencies if needed
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt
+
+      # Step 4: Run tests
+      - name: Run test suite
+        run: |
+          pytest tests/
+
+      # Step 5: Optional additional step
+      - name: Echo modified branch
+        run: echo "Running workflow for branch ${{ github.ref }}"
