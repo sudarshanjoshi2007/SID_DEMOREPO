@@ -12,6 +12,8 @@ on:
       - 'src/**'       # Matches all files under the src directory
       - 'config/**'    # Matches all files under the config directory
       - 'README.md'    # Matches a specific file
+# Allows you to run this workflow manually from the Actions tab
+  workflow_dispatch:
 
 # Define the workflow jobs
 jobs:
